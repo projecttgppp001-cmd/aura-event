@@ -144,7 +144,7 @@ npm run build   # outputs to dist/
 
 ## Live Demo
 
-Live Demo: [DEPLOYED URL]
+Live Demo: [https://aura-event-xi.vercel.app](https://aura-event-xi.vercel.app)
 
 ## GitHub Repository
 

@@ -210,6 +210,7 @@ export default function Docs() {
         <nav className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
           {SECTIONS.map(s => (
             <button
+              type="button"
               key={s.id}
               onClick={() => setActive(s.id)}
               className={`whitespace-nowrap text-left text-sm px-3 py-2 rounded-lg transition-colors shrink-0 ${

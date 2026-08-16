@@ -16,7 +16,7 @@ export default function ManageAnnouncements() {
   const [sending, setSending] = useState(false)
 
   const load = () => announcementService.list().then(setItems)
-  useEffect(load, [])
+  useEffect(() => { load() }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -35,8 +35,13 @@ export default function ManageAnnouncements() {
 
   const handleDelete = async (id) => {
     if (!confirm('Delete this announcement?')) return
-    await announcementService.remove(id)
-    load()
+    try {
+      await announcementService.remove(id)
+      showToast('Announcement deleted.', 'info')
+      load()
+    } catch (err) {
+      showToast(err.message || 'Could not delete announcement.', 'error')
+    }
   }
 
   return (
@@ -53,7 +58,7 @@ export default function ManageAnnouncements() {
             className="bg-slate-800/60 border border-white/10 rounded-lg px-3 py-2.5 text-sm">
             {['Normal', 'Important', 'Urgent'].map(p => <option key={p} value={p} className="bg-slate-800">{p}</option>)}
           </select>
-          <button disabled={sending} className="flex items-center gap-1.5 bg-primary-600 hover:bg-primary-500 disabled:opacity-60 px-5 py-2.5 rounded-lg text-sm font-medium">
+          <button type="submit" disabled={sending} className="danger-button flex items-center gap-1.5 disabled:opacity-60 px-5 py-2.5 rounded-lg text-sm font-bold">
             <Send size={14} /> {sending ? 'Publishing…' : 'Publish'}
           </button>
         </div>
@@ -66,7 +71,7 @@ export default function ManageAnnouncements() {
               <h3 className="font-semibold">{a.title}</h3>
               <div className="flex items-center gap-2">
                 <span className={`text-xs px-2.5 py-1 rounded-full border ${PRIORITY_STYLE[a.priority]}`}>{a.priority}</span>
-                <button onClick={() => handleDelete(a.id)} className="p-1.5 rounded-lg hover:bg-white/5 text-slate-500 hover:text-red-400"><Trash2 size={14} /></button>
+                <button type="button" onClick={() => handleDelete(a.id)} className="p-1.5 rounded-lg hover:bg-white/5 text-slate-500 hover:text-red-400" aria-label={`Delete announcement ${a.title}`}><Trash2 size={14} /></button>
               </div>
             </div>
             <p className="text-sm text-slate-400">{a.message}</p>

@@ -34,8 +34,9 @@ export default function MyRegistrations() {
   if (loading) return null
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
-      <h1 className="font-display text-2xl font-semibold mb-6">My Tickets</h1>
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 route-enter">
+      <p className="eyebrow mb-2"><span className="status-dot" /> Secured access</p>
+      <h1 className="danger-title text-3xl sm:text-4xl mb-7">My tickets.</h1>
 
       {active.length === 0 ? (
         <p className="text-slate-500 text-center py-16">No active tickets yet — register for an event to get your QR pass.</p>
@@ -54,10 +55,10 @@ export default function MyRegistrations() {
               <p className="text-[11px] text-slate-500">{user.full_name} · {user.student_id}</p>
 
               <div className="no-print flex gap-2 mt-2 w-full">
-                <button onClick={() => window.print()} className="flex-1 bg-slate-800 hover:bg-slate-700 rounded-lg py-2 text-sm flex items-center justify-center gap-1.5">
+                <button type="button" onClick={() => window.print()} className="danger-outline flex-1 rounded-lg py-2.5 text-sm flex items-center justify-center gap-1.5">
                   <Printer size={14} /> Print / Download
                 </button>
-                <button onClick={() => handleCancel(r.id)} className="flex-1 bg-red-600/20 hover:bg-red-600/30 text-red-300 rounded-lg py-2 text-sm flex items-center justify-center gap-1.5">
+                <button type="button" onClick={() => handleCancel(r.id)} className="flex-1 bg-red-600/15 border border-red-500/25 hover:bg-red-600/25 text-red-300 rounded-lg py-2.5 text-sm flex items-center justify-center gap-1.5">
                   <XCircle size={14} /> Cancel
                 </button>
               </div>

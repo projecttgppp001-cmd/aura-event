@@ -17,9 +17,9 @@ export default function AdminDashboard() {
   }, [])
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-8 py-10">
+    <div className="max-w-6xl mx-auto px-4 sm:px-8 py-10 route-enter">
       <div className="flex items-center justify-between mb-1">
-        <h1 className="font-display text-2xl font-semibold">Admin Dashboard</h1>
+        <div><p className="eyebrow mb-2"><span className="status-dot" /> Admin command</p><h1 className="danger-title text-3xl sm:text-4xl">Control center.</h1></div>
         <span className={`text-xs px-2.5 py-1 rounded-full border ${usingSupabase ? 'border-emerald-500/30 text-emerald-300 bg-emerald-500/10' : 'border-amber-500/30 text-amber-300 bg-amber-500/10'}`}>
           {usingSupabase ? 'Supabase PostgreSQL' : 'Local Mock Mode'}
         </span>
@@ -34,7 +34,7 @@ export default function AdminDashboard() {
 
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-display text-xl font-semibold flex items-center gap-2"><TrendingUp size={18} className="text-primary-400" /> Recent Events</h2>
-        <Link to="/admin/events/new" className="flex items-center gap-1.5 text-sm bg-primary-600 hover:bg-primary-500 px-4 py-2 rounded-lg font-medium">
+        <Link to="/admin/events/new" className="danger-button flex items-center gap-1.5 text-sm px-4 py-2.5 rounded-lg font-bold">
           <Plus size={15} /> New Event
         </Link>
       </div>

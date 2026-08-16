@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Sparkles, Mail, Lock, LogIn } from 'lucide-react'
+import { Command, Mail, Lock, LogIn } from 'lucide-react'
 import { useAuth } from '../context/useAuth'
 import { useToast } from '../components/useToast'
 
@@ -32,13 +32,14 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md glass-panel rounded-2xl p-8">
-        <div className="flex items-center gap-2 justify-center mb-6 font-display font-semibold text-xl">
-          <Sparkles className="text-primary-400" /> AuraEvent
+    <div className="min-h-screen danger-grid flex items-center justify-center px-4 py-12 route-enter">
+      <div className="w-full max-w-md glass-panel rounded-2xl p-7 sm:p-9 border-primary-500/20 shadow-[0_0_100px_rgba(225,29,72,.1)]">
+        <div className="flex items-center gap-2.5 justify-center mb-7 font-display font-extrabold text-xl">
+          <span className="size-9 rounded-lg danger-button flex items-center justify-center"><Command size={18} /></span> AURA<span className="text-primary-500">//LOGIN</span>
         </div>
-        <h1 className="text-xl font-semibold text-center mb-1">Welcome back</h1>
-        <p className="text-sm text-slate-400 text-center mb-6">Sign in to continue</p>
+        <p className="eyebrow justify-center w-full mb-2"><span className="status-dot" /> Secure access point</p>
+        <h1 className="danger-title text-3xl text-center mb-2">Welcome back.</h1>
+        <p className="text-sm text-slate-500 text-center mb-7">Authenticate to enter the command center</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <label className="flex flex-col gap-1.5 text-sm">
@@ -58,14 +59,14 @@ export default function Login() {
             </div>
           </label>
 
-          <button disabled={loading} className="mt-2 bg-primary-600 hover:bg-primary-500 disabled:opacity-60 rounded-lg py-2.5 font-medium flex items-center justify-center gap-2 transition-colors">
+          <button type="submit" disabled={loading} className="danger-button mt-2 disabled:opacity-60 rounded-lg py-3 font-bold flex items-center justify-center gap-2">
             <LogIn size={16} /> {loading ? 'Signing in…' : 'Sign In'}
           </button>
         </form>
 
         <div className="mt-5 flex gap-2 text-xs">
-          <button onClick={() => fillDemo('student')} className="flex-1 bg-slate-800/60 hover:bg-slate-700/60 rounded-lg py-2 text-slate-300">Use Student Demo</button>
-          <button onClick={() => fillDemo('admin')} className="flex-1 bg-slate-800/60 hover:bg-slate-700/60 rounded-lg py-2 text-slate-300">Use Admin Demo</button>
+          <button type="button" onClick={() => fillDemo('student')} className="danger-outline flex-1 rounded-lg py-2.5 text-slate-300">Student Demo</button>
+          <button type="button" onClick={() => fillDemo('admin')} className="danger-outline flex-1 rounded-lg py-2.5 text-slate-300">Admin Demo</button>
         </div>
 
         <p className="text-sm text-slate-400 text-center mt-6">

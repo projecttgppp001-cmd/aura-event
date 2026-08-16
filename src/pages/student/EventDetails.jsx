@@ -62,10 +62,10 @@ export default function EventDetails() {
   else if (deadlinePassed) { buttonLabel = 'Registration Closed'; disabled = true }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 route-enter">
       <span className="text-xs px-2.5 py-1 rounded-full bg-primary-500/15 text-primary-300 border border-primary-500/30">{event.category}</span>
-      <h1 className="font-display text-3xl font-bold mt-3 mb-2">{event.title}</h1>
-      <p className="text-slate-400 mb-8">{event.description}</p>
+      <h1 className="danger-title text-4xl sm:text-5xl mt-4 mb-3">{event.title}</h1>
+      <p className="text-slate-500 mb-8 leading-relaxed">{event.description}</p>
 
       <div className="grid sm:grid-cols-2 gap-4 mb-8">
         <InfoRow icon={CalendarDays} label="Date" value={new Date(event.event_date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })} />
@@ -81,8 +81,8 @@ export default function EventDetails() {
           <p className="text-sm text-slate-400">Registration deadline</p>
           <p className="font-medium">{new Date(event.registration_deadline).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
         </div>
-        <button onClick={handleRegister} disabled={disabled || registering}
-          className="bg-primary-600 hover:bg-primary-500 disabled:opacity-50 disabled:cursor-not-allowed px-6 py-3 rounded-xl font-medium transition-colors">
+        <button type="button" onClick={handleRegister} disabled={disabled || registering}
+          className="danger-button disabled:opacity-50 disabled:cursor-not-allowed px-6 py-3 rounded-lg font-bold">
           {registering ? 'Registering…' : buttonLabel}
         </button>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Sparkles, UserPlus } from 'lucide-react'
+import { Command, UserPlus } from 'lucide-react'
 import { useAuth } from '../context/useAuth'
 import { useToast } from '../components/useToast'
 
@@ -38,13 +38,14 @@ export default function Register() {
   const wrapCls = "bg-slate-800/60 border border-white/10 rounded-lg px-3 py-2.5"
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-lg glass-panel rounded-2xl p-8">
-        <div className="flex items-center gap-2 justify-center mb-6 font-display font-semibold text-xl">
-          <Sparkles className="text-primary-400" /> AuraEvent
+    <div className="min-h-screen danger-grid flex items-center justify-center px-4 py-12 route-enter">
+      <div className="w-full max-w-lg glass-panel rounded-2xl p-7 sm:p-9 border-primary-500/20 shadow-[0_0_100px_rgba(225,29,72,.1)]">
+        <div className="flex items-center gap-2.5 justify-center mb-7 font-display font-extrabold text-xl">
+          <span className="size-9 rounded-lg danger-button flex items-center justify-center"><Command size={18} /></span> AURA<span className="text-primary-500">//ACCESS</span>
         </div>
-        <h1 className="text-xl font-semibold text-center mb-1">Create your student account</h1>
-        <p className="text-sm text-slate-400 text-center mb-6">Register to book events and get QR passes</p>
+        <p className="eyebrow justify-center w-full mb-2"><span className="status-dot" /> New operator</p>
+        <h1 className="danger-title text-3xl text-center mb-2">Activate access.</h1>
+        <p className="text-sm text-slate-500 text-center mb-7">Build your identity. Own your event feed.</p>
 
         <form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-4">
           <label className="flex flex-col gap-1.5 text-sm sm:col-span-2">
@@ -76,7 +77,7 @@ export default function Register() {
             </div>
           </label>
 
-          <button disabled={loading} className="sm:col-span-2 mt-2 bg-primary-600 hover:bg-primary-500 disabled:opacity-60 rounded-lg py-2.5 font-medium flex items-center justify-center gap-2 transition-colors">
+          <button type="submit" disabled={loading} className="danger-button sm:col-span-2 mt-2 disabled:opacity-60 rounded-lg py-3 font-bold flex items-center justify-center gap-2">
             <UserPlus size={16} /> {loading ? 'Creating account…' : 'Create Account'}
           </button>
         </form>

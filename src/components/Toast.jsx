@@ -32,7 +32,7 @@ export function ToastProvider({ children }) {
             <div key={t.id} className={`glass-panel ${style.border} border rounded-xl p-3 flex items-start gap-2 shadow-xl animate-[fadeIn_0.2s_ease-out]`}>
               <Icon size={18} className={`${style.text} mt-0.5 shrink-0`} />
               <p className="text-sm text-slate-200 flex-1">{t.message}</p>
-              <button onClick={() => dismiss(t.id)} className="text-slate-500 hover:text-slate-300">
+              <button type="button" onClick={() => dismiss(t.id)} className="text-slate-500 hover:text-slate-300" aria-label="Dismiss notification">
                 <X size={14} />
               </button>
             </div>

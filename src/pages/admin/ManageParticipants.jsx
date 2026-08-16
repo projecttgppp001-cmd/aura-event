@@ -38,7 +38,7 @@ export default function ManageParticipants() {
     <div className="max-w-6xl mx-auto px-4 sm:px-8 py-10">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <h1 className="font-display text-2xl font-semibold">Participants</h1>
-        <button onClick={exportCsv} className="flex items-center gap-1.5 text-sm bg-primary-600 hover:bg-primary-500 px-4 py-2 rounded-lg font-medium">
+        <button type="button" onClick={exportCsv} disabled={filtered.length === 0} className="danger-button disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1.5 text-sm px-4 py-2.5 rounded-lg font-bold">
           <Download size={15} /> Export CSV
         </button>
       </div>

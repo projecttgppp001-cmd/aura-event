@@ -13,7 +13,7 @@ export default function ManageEvents() {
     setLoading(true)
     eventService.list().then(setEvents).finally(() => setLoading(false))
   }
-  useEffect(load, [])
+  useEffect(() => { load() }, [])
 
   const handleDelete = async (id, title) => {
     if (!confirm(`Delete "${title}"? This cannot be undone.`)) return
@@ -30,7 +30,7 @@ export default function ManageEvents() {
     <div className="max-w-6xl mx-auto px-4 sm:px-8 py-10">
       <div className="flex items-center justify-between mb-6">
         <h1 className="font-display text-2xl font-semibold">Manage Events</h1>
-        <Link to="/admin/events/new" className="flex items-center gap-1.5 text-sm bg-primary-600 hover:bg-primary-500 px-4 py-2 rounded-lg font-medium">
+        <Link to="/admin/events/new" className="danger-button flex items-center gap-1.5 text-sm px-4 py-2.5 rounded-lg font-bold">
           <Plus size={15} /> New Event
         </Link>
       </div>
@@ -57,8 +57,8 @@ export default function ManageEvents() {
                 <td className="px-5 py-3 text-slate-400">{e.status}</td>
                 <td className="px-5 py-3">
                   <div className="flex items-center justify-end gap-2">
-                    <Link to={`/admin/events/edit/${e.id}`} className="p-2 rounded-lg hover:bg-white/5 text-slate-400 hover:text-primary-300"><Pencil size={15} /></Link>
-                    <button onClick={() => handleDelete(e.id, e.title)} className="p-2 rounded-lg hover:bg-white/5 text-slate-400 hover:text-red-400"><Trash2 size={15} /></button>
+                    <Link to={`/admin/events/edit/${e.id}`} className="p-2 rounded-lg hover:bg-white/5 text-slate-400 hover:text-primary-300" aria-label={`Edit ${e.title}`}><Pencil size={15} /></Link>
+                    <button type="button" onClick={() => handleDelete(e.id, e.title)} className="p-2 rounded-lg hover:bg-white/5 text-slate-400 hover:text-red-400" aria-label={`Delete ${e.title}`}><Trash2 size={15} /></button>
                   </div>
                 </td>
               </tr>

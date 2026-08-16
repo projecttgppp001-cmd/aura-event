@@ -37,7 +37,7 @@ const PageLoader = () => (
 // Student Module Wrapper (Top Navbar style)
 const StudentLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-slate-950">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-1 w-full pb-16">
         <Routes>
@@ -73,9 +73,9 @@ const StudentLayout = () => {
 // Admin Module Wrapper (Left Sidebar style)
 const AdminLayout = () => {
   return (
-    <div className="flex min-h-screen bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen text-slate-100">
       <Sidebar />
-      <main className="flex-1 overflow-y-auto h-screen bg-slate-900/10">
+      <main className="flex-1 min-w-0 overflow-y-auto h-screen pb-20 lg:pb-0">
         <Routes>
           <Route path="dashboard" element={
             <ProtectedRoute allowedRoles={['admin']}>
@@ -122,7 +122,7 @@ const AdminLayout = () => {
 // General Docs Wrapper with Navbar
 const GeneralDocsLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-slate-950">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-1 w-full pb-16">
         <Docs />

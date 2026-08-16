@@ -2,91 +2,247 @@
 
 @theme {
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-display: "Space Grotesk", sans-serif;
-  
-  --color-primary-50: #f5f3ff;
-  --color-primary-100: #ede9fe;
-  --color-primary-200: #ddd6fe;
-  --color-primary-300: #c4b5fd;
-  --color-primary-400: #a78bfa;
-  --color-primary-500: #8b5cf6;
-  --color-primary-600: #7c3aed;
-  --color-primary-700: #6d28d9;
-  --color-primary-800: #5b21b6;
-  --color-primary-900: #4c1d95;
-  --color-primary-950: #2e1065;
+  --font-display: "Syne", "Space Grotesk", sans-serif;
+  --color-primary-50: #fff1f2;
+  --color-primary-100: #ffe4e6;
+  --color-primary-200: #fecdd3;
+  --color-primary-300: #fda4af;
+  --color-primary-400: #fb7185;
+  --color-primary-500: #f43f5e;
+  --color-primary-600: #e11d48;
+  --color-primary-700: #be123c;
+  --color-primary-800: #9f1239;
+  --color-primary-900: #881337;
+  --color-primary-950: #4c0519;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #0f172a; /* slate-900 */
-}
-::-webkit-scrollbar-thumb {
-  background: #334155; /* slate-700 */
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #475569; /* slate-600 */
+:root {
+  color-scheme: dark;
+  font-synthesis: none;
+  --danger: #ff244d;
+  --danger-hot: #ff4d1c;
+  --ink: #050505;
+  --panel: rgba(12, 12, 14, 0.82);
+  --line: rgba(255, 255, 255, 0.1);
 }
 
-/* Base HTML resets for AuraEvent design */
+* { box-sizing: border-box; }
+
+html {
+  background: var(--ink);
+  scroll-behavior: smooth;
+}
+
 body {
+  min-width: 320px;
+  margin: 0;
   font-family: var(--font-sans);
-  background-color: #0b0f19; /* Custom premium dark blue-gray */
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.05) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.05) 0px, transparent 50%);
+  background:
+    radial-gradient(circle at 18% -10%, rgba(255, 36, 77, 0.18), transparent 32rem),
+    radial-gradient(circle at 92% 24%, rgba(255, 77, 28, 0.1), transparent 26rem),
+    linear-gradient(180deg, #060607 0%, #09090b 48%, #040404 100%);
   background-attachment: fixed;
-  color: #f1f5f9;
+  color: #f8fafc;
+  overflow-x: hidden;
 }
 
-/* Remove default Vite root constraints */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+::selection { color: white; background: rgba(255, 36, 77, 0.72); }
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: #3f111b; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--danger); }
+
 #root {
   width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  border-inline: none;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button, a { outline: none; }
+button:not(:disabled), a[href] { cursor: pointer; }
+
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--danger);
+  outline-offset: 3px;
+}
+
+button:active:not(:disabled), a:active { transform: translateY(1px) scale(.99); }
+
 .glass-panel {
-  background: rgba(17, 24, 39, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(145deg, rgba(17, 17, 20, .93), rgba(8, 8, 10, .82));
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--line);
+  box-shadow: inset 0 1px rgba(255,255,255,.03), 0 24px 80px rgba(0,0,0,.28);
 }
 
 .glass-card {
-  background: rgba(30, 41, 59, 0.4);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(19, 19, 22, .84), rgba(8, 8, 10, .78));
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, .08);
+  box-shadow: 0 16px 50px rgba(0,0,0,.2);
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+
+.glass-card::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  opacity: 0;
+  background: linear-gradient(180deg, transparent, var(--danger), transparent);
+  transition: opacity .25s ease;
 }
 
 .glass-card:hover {
-  background: rgba(30, 41, 59, 0.6);
-  border-color: rgba(139, 92, 246, 0.25);
-  box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.15);
+  transform: translateY(-4px);
+  background: linear-gradient(145deg, rgba(24, 18, 21, .94), rgba(9, 9, 11, .88));
+  border-color: rgba(255, 36, 77, .42);
+  box-shadow: 0 24px 70px rgba(0,0,0,.36), 0 0 45px rgba(255,36,77,.08);
 }
 
-/* Dynamic Print Styles for QR Pass */
+.glass-card:hover::after { opacity: 1; }
+
+.danger-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: white;
+  background: linear-gradient(120deg, #e11d48, #ff3b1f);
+  border: 1px solid rgba(255, 132, 112, .55);
+  box-shadow: 0 10px 35px rgba(225,29,72,.25), inset 0 1px rgba(255,255,255,.25);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.danger-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translateX(-105%) skewX(-18deg);
+  background: rgba(255,255,255,.18);
+  transition: transform .45s ease;
+}
+
+.danger-button:hover {
+  filter: saturate(1.15);
+  box-shadow: 0 14px 44px rgba(225,29,72,.42), 0 0 0 1px rgba(255,255,255,.08);
+}
+
+.danger-button:hover::before { transform: translateX(105%) skewX(-18deg); }
+
+.danger-outline {
+  color: #e2e8f0;
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(255,255,255,.13);
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.danger-outline:hover {
+  color: white;
+  border-color: rgba(255,36,77,.65);
+  background: rgba(255,36,77,.09);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #fb7185;
+}
+
+.status-dot {
+  width: .5rem;
+  height: .5rem;
+  border-radius: 999px;
+  background: var(--danger);
+  box-shadow: 0 0 18px var(--danger);
+  animation: danger-pulse 1.8s ease-in-out infinite;
+}
+
+.danger-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -.055em;
+  line-height: .94;
+}
+
+.danger-gradient-text {
+  color: transparent;
+  background: linear-gradient(90deg, #fff 0%, #ff6a64 45%, #f43f5e 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.danger-grid {
+  background-image:
+    linear-gradient(rgba(255,36,77,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,36,77,.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.scanline { position: relative; overflow: hidden; }
+.scanline::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255,78,78,.75), transparent);
+  animation: scan 5s linear infinite;
+}
+
+.danger-number {
+  font-family: "JetBrains Mono", monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.route-enter { animation: route-in .45s ease both; }
+
+@keyframes danger-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .45; transform: scale(.72); }
+}
+
+@keyframes scan { from { top: -2%; } to { top: 102%; } }
+@keyframes route-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @media print {
-  body {
-    background: white !important;
-    color: black !important;
-  }
-  .no-print {
-    display: none !important;
-  }
+  body { background: white !important; color: black !important; }
+  body::before, .no-print { display: none !important; }
   .print-card {
-    border: 2px solid #000000 !important;
+    border: 2px solid #000 !important;
     padding: 20px !important;
     max-width: 500px !important;
     margin: 0 auto !important;

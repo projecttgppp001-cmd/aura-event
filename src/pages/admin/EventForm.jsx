@@ -81,7 +81,7 @@ export default function EventForm() {
         <Field label="Capacity"><input required type="number" min={1} value={form.capacity} onChange={set('capacity')} className={inputCls} /></Field>
         <Field label="Prize (optional)"><input value={form.prize} onChange={set('prize')} className={inputCls} /></Field>
 
-        <button disabled={saving} className="sm:col-span-2 mt-2 bg-primary-600 hover:bg-primary-500 disabled:opacity-60 rounded-lg py-2.5 font-medium flex items-center justify-center gap-2">
+        <button type="submit" disabled={saving} className="danger-button sm:col-span-2 mt-2 disabled:opacity-60 rounded-lg py-3 font-bold flex items-center justify-center gap-2">
           <Save size={16} /> {saving ? 'Saving…' : 'Save Event'}
         </button>
       </form>

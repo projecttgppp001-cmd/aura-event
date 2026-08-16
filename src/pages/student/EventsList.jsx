@@ -26,8 +26,9 @@ export default function EventsList() {
   }, [events, query, category, sort])
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-      <h1 className="font-display text-2xl font-semibold mb-6">Explore Events</h1>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 route-enter">
+      <p className="eyebrow mb-2"><span className="status-dot" /> Live targets</p>
+      <h1 className="danger-title text-3xl sm:text-4xl mb-7">Explore events.</h1>
 
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
         <div className="flex items-center gap-2 bg-slate-800/60 border border-white/10 rounded-lg px-3 py-2.5 flex-1">

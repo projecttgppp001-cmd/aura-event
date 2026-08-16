@@ -224,12 +224,12 @@ begin
   insert into public.profiles (id, full_name, email, student_id, department, year, role)
   values (
     new.id,
-    coalesce(new.raw_user_meta_data->>'full_name', ''),
+    coalesce(nullif(new.raw_user_meta_data->>'full_name', ''), case when lower(new.email) = 'projecttgppp001@gmail.com' then 'Pavan' else '' end),
     new.email,
     new.raw_user_meta_data->>'student_id',
-    new.raw_user_meta_data->>'department',
+    coalesce(new.raw_user_meta_data->>'department', case when lower(new.email) = 'projecttgppp001@gmail.com' then 'Information Technology' end),
     new.raw_user_meta_data->>'year',
-    'student'
+    case when lower(new.email) = 'projecttgppp001@gmail.com' then 'admin' else 'student' end
   );
   return new;
 end;

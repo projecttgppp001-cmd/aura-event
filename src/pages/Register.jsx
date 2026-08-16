@@ -50,7 +50,7 @@ export default function Register() {
         <form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-4">
           <label className="flex flex-col gap-1.5 text-sm sm:col-span-2">
             <span className="text-slate-400">Full Name</span>
-            <div className={wrapCls}><input required value={form.full_name} onChange={set('full_name')} className={inputCls} placeholder="Rahul Verma" /></div>
+            <div className={wrapCls}><input required value={form.full_name} onChange={set('full_name')} className={inputCls} placeholder="Pavan" /></div>
           </label>
           <label className="flex flex-col gap-1.5 text-sm sm:col-span-2">
             <span className="text-slate-400">Email</span>
@@ -62,11 +62,11 @@ export default function Register() {
           </label>
           <label className="flex flex-col gap-1.5 text-sm">
             <span className="text-slate-400">Student ID</span>
-            <div className={wrapCls}><input required value={form.student_id} onChange={set('student_id')} className={inputCls} placeholder="CS2026041" /></div>
+            <div className={wrapCls}><input required value={form.student_id} onChange={set('student_id')} className={inputCls} placeholder="IT2026041" /></div>
           </label>
           <label className="flex flex-col gap-1.5 text-sm">
             <span className="text-slate-400">Department</span>
-            <div className={wrapCls}><input required value={form.department} onChange={set('department')} className={inputCls} placeholder="Computer Science" /></div>
+            <div className={wrapCls}><input required value={form.department} onChange={set('department')} className={inputCls} placeholder="Information Technology" /></div>
           </label>
           <label className="flex flex-col gap-1.5 text-sm sm:col-span-2">
             <span className="text-slate-400">Year</span>

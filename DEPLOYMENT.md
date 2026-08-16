@@ -72,7 +72,7 @@ Open your actual Vercel URL (not localhost) and check:
 - [ ] Register a new student account, or log in with a demo account
 - [ ] Browse/search/filter events, register for one, see the QR pass under **My Tickets**
 - [ ] Try registering twice for the same event → blocked
-- [ ] Log in as admin (`admin@college.edu` / `admin123` in Local Mode), reach `/admin/dashboard`
+- [ ] Log in with the production admin account, reach `/admin/dashboard`
 - [ ] Log out, then try typing `/admin/dashboard` directly in the URL bar → redirected, not shown
 - [ ] Create/edit an event, view participants, export CSV, publish an announcement
 - [ ] Check the page on a phone-width browser window

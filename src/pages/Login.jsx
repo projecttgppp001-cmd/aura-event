@@ -25,12 +25,6 @@ export default function Login() {
     }
   }
 
-  const fillDemo = (role) => {
-    setForm(role === 'admin'
-      ? { email: 'admin@college.edu', password: 'admin123' }
-      : { email: 'student@college.edu', password: 'student123' })
-  }
-
   return (
     <div className="min-h-screen danger-grid flex items-center justify-center px-4 py-12 route-enter">
       <div className="w-full max-w-md glass-panel rounded-2xl p-7 sm:p-9 border-primary-500/20 shadow-[0_0_100px_rgba(225,29,72,.1)]">
@@ -63,11 +57,6 @@ export default function Login() {
             <LogIn size={16} /> {loading ? 'Signing in…' : 'Sign In'}
           </button>
         </form>
-
-        <div className="mt-5 flex gap-2 text-xs">
-          <button type="button" onClick={() => fillDemo('student')} className="danger-outline flex-1 rounded-lg py-2.5 text-slate-300">Student Demo</button>
-          <button type="button" onClick={() => fillDemo('admin')} className="danger-outline flex-1 rounded-lg py-2.5 text-slate-300">Admin Demo</button>
-        </div>
 
         <p className="text-sm text-slate-400 text-center mt-6">
           Don't have an account? <Link to="/register" className="text-primary-400 hover:text-primary-300">Sign up</Link>

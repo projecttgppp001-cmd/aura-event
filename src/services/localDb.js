@@ -81,8 +81,15 @@ function seedIfEmpty() {
   if (!localStorage.getItem(KEYS.users)) {
     write(KEYS.users, [
       { id: uid(), full_name: 'Prof. Vikram Sharma', email: 'admin@college.edu', password: 'admin123', role: 'admin', student_id: '', department: 'Administration', year: '' },
-      { id: uid(), full_name: 'Rahul Verma', email: 'student@college.edu', password: 'student123', role: 'student', student_id: 'CS2023041', department: 'Computer Science', year: '3rd Year' },
+      { id: uid(), full_name: 'Pavan', email: 'student@college.edu', password: 'student123', role: 'student', student_id: 'IT2023041', department: 'Information Technology', year: '3rd Year' },
     ])
+  }
+  // Keep existing local development data aligned after identity updates.
+  const users = read(KEYS.users, [])
+  const demoStudent = users.find(user => user.email === 'student@college.edu')
+  if (demoStudent && (demoStudent.full_name !== 'Pavan' || demoStudent.department !== 'Information Technology')) {
+    Object.assign(demoStudent, { full_name: 'Pavan', student_id: 'IT2023041', department: 'Information Technology' })
+    write(KEYS.users, users)
   }
   if (!localStorage.getItem(KEYS.registrations)) write(KEYS.registrations, [])
   if (!localStorage.getItem(KEYS.announcements)) {

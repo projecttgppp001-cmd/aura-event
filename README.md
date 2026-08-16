@@ -121,7 +121,7 @@ in Local Mock Mode):
 
 ```env
 VITE_SUPABASE_URL=
-VITE_SUPABASE_ANON_KEY=
+VITE_SUPABASE_PUBLISHABLE_KEY=
 ```
 
 Never put the Supabase **service-role** key here — only the public anon key is safe for a frontend app.
@@ -154,13 +154,6 @@ Repository: [github.com/projecttgppp001-cmd/aura-event](https://github.com/proje
 
 Email: [projecttgppp001@gmail.com](mailto:projecttgppp001@gmail.com)  
 GitHub: [projecttgppp001-cmd](https://github.com/projecttgppp001-cmd)
-
-## Demo Accounts (Local Mock Mode)
-
-| Role | Email | Password |
-|---|---|---|
-| Admin | `admin@college.edu` | `admin123` |
-| Student | `student@college.edu` | `student123` |
 
 ## Testing
 
